@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Board Member - Executive Room</title>
+    <style>
+        /* 1. ベースデザイン：重厚な背景 */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0a0a0b; /* リッチブラック */
+            font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", serif;
+            overflow: hidden;
+            color: #e0e0e0;
+        }
+
+        /* 2. 背景アバター：呼吸するアニメーション */
+        .avatar-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* ここに生成したアバター画像のURLを入れます */
+            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop') no-repeat center center;
+            background-size: cover;
+            filter: brightness(0.6) contrast(1.1);
+            z-index: 1;
+            animation: breathe 10s infinite ease-in-out;
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1.0); filter: brightness(0.6); }
+            50% { transform: scale(1.02); filter: brightness(0.7); }
+        }
+
+        /* 3. メインコンテナ */
+        .main-container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+        }
+
+        /* 4. グラスモーフィズム iFrame コンテナ */
+        .chat-window {
+            width: 80%;
+            max-width: 900px;
+            height: 80vh;
+            background: rgba(255, 255, 255, 0.05); /* 透過 */
+            backdrop-filter: blur(15px); /* ぼかし */
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(197, 160, 89, 0.3); /* ゴールドの微かな光 */
+            border-radius: 12px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 5. ゴールドのアクセントライン */
+        .chat-window::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #C5A059, transparent);
+        }
+
+        /* 6. ヘッダー：役職と名前 */
+        .chat-header {
+            padding: 20px 30px;
+            background: rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .role-title {
+            letter-spacing: 0.2em;
+            color: #C5A059; /* ゴールド */
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00ff88;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+            box-shadow: 0 0 10px #00ff88;
+        }
+
+        /* 7. iFrame本体 */
+        iframe {
+            width: 100%;
+            flex-grow: 1;
+            border: none;
+            background: transparent;
+        }
+
+        /* 8. フッター（ステータス表示） */
+        .chat-footer {
+            padding: 10px 30px;
+            font-size: 0.75rem;
+            background: rgba(0, 0, 0, 0.4);
+            color: rgba(255, 255, 255, 0.5);
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="avatar-background"></div>
+
+    <div class="main-container">
+        <div class="chat-window">
+            <div class="chat-header">
+                <div>
+                    <span class="status-dot"></span>
+                    <span class="role-title">Board Director AI - Eiji Shimizu Strategy Room</span>
+                </div>
+                <div style="font-size: 0.8rem; color: #888;">TOP SECRET</div>
+            </div>
+
+            <iframe src="YOUR_CHATBOT_URL_HERE"></iframe>
+
+            <div class="chat-footer">
+                Connecting to RAG Knowledge Base: Corporate Strategy 2026.v3
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
